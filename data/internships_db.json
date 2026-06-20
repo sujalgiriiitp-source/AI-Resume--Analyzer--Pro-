@@ -1,0 +1,44 @@
+{
+  "internships": [
+    {
+      "title": "Data Analyst Intern",
+      "description": "Analyze business data, create reports, and build dashboards to drive data-informed decisions.",
+      "required_skills": ["Python", "SQL", "Pandas", "Excel", "Statistics", "Data Analytics"],
+      "nice_to_have": ["Tableau", "Power BI", "NumPy", "Matplotlib"],
+      "min_skills": 3,
+      "category": "Analytics"
+    },
+    {
+      "title": "Business Analyst Intern",
+      "description": "Bridge the gap between business needs and technical solutions through data analysis and process optimization.",
+      "required_skills": ["Excel", "SQL", "Data Analytics", "Statistics", "Power BI"],
+      "nice_to_have": ["Python", "Tableau", "Pandas"],
+      "min_skills": 3,
+      "category": "Analytics"
+    },
+    {
+      "title": "Python Developer Intern",
+      "description": "Build scalable backend applications and APIs using Python frameworks.",
+      "required_skills": ["Python", "Git", "GitHub", "Flask", "SQL"],
+      "nice_to_have": ["Django", "FastAPI", "Docker", "PostgreSQL", "HTML", "CSS"],
+      "min_skills": 3,
+      "category": "Development"
+    },
+    {
+      "title": "Machine Learning Intern",
+      "description": "Develop and deploy machine learning models for real-world applications.",
+      "required_skills": ["Python", "Machine Learning", "Scikit-Learn", "Pandas", "NumPy", "Statistics"],
+      "nice_to_have": ["TensorFlow", "Deep Learning", "NLP", "Matplotlib", "SQL"],
+      "min_skills": 4,
+      "category": "AI/ML"
+    },
+    {
+      "title": "Data Science Intern",
+      "description": "Extract insights from complex datasets using statistical methods and machine learning.",
+      "required_skills": ["Python", "SQL", "Pandas", "NumPy", "Statistics", "Machine Learning", "Data Analytics"],
+      "nice_to_have": ["Scikit-Learn", "Matplotlib", "Tableau", "Git", "Deep Learning"],
+      "min_skills": 4,
+      "category": "Data Science"
+    }
+  ]
+}

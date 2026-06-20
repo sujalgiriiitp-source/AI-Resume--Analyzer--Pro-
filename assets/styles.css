@@ -1,0 +1,425 @@
+/* ==========================================================================
+   AI Resume Analyzer Pro — Global Stylesheet
+   ==========================================================================
+   Premium dark-theme design system with glassmorphism cards, vibrant
+   gradient accents, and Streamlit-specific overrides.
+   ========================================================================== */
+
+/* ── Google Font ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ── CSS Custom Properties (Design Tokens) ───────────────────────────────── */
+:root {
+    /* Backgrounds */
+    --bg-primary:           #0E1117;
+    --bg-secondary:         #1B1F2A;
+    --bg-card:              rgba(30, 35, 50, 0.65);
+    --bg-card-hover:        rgba(40, 46, 65, 0.80);
+    --bg-glass:             rgba(255, 255, 255, 0.04);
+
+    /* Text */
+    --text-primary:         #FAFAFA;
+    --text-secondary:       #B0BEC5;
+    --text-muted:           #78909C;
+
+    /* Brand / Accent */
+    --accent:               #6C63FF;
+    --accent-hover:         #7B73FF;
+    --accent-glow:          rgba(108, 99, 255, 0.35);
+
+    /* Gradients */
+    --gradient-main:        linear-gradient(135deg, #6C63FF 0%, #00D2FF 50%, #00E5A0 100%);
+    --gradient-purple-blue: linear-gradient(135deg, #6C63FF 0%, #3B82F6 100%);
+    --gradient-blue-teal:   linear-gradient(135deg, #3B82F6 0%, #00D2FF 100%);
+    --gradient-teal-green:  linear-gradient(135deg, #00D2FF 0%, #00E5A0 100%);
+    --gradient-warm:        linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+
+    /* Semantic */
+    --success:              #66BB6A;
+    --success-bg:           rgba(102, 187, 106, 0.12);
+    --warning:              #FFA726;
+    --warning-bg:           rgba(255, 167, 38, 0.12);
+    --danger:               #FF4B4B;
+    --danger-bg:            rgba(255, 75, 75, 0.12);
+    --info:                 #29B6F6;
+    --info-bg:              rgba(41, 182, 246, 0.12);
+
+    /* Borders & Shadows */
+    --border-subtle:        rgba(255, 255, 255, 0.06);
+    --border-accent:        rgba(108, 99, 255, 0.30);
+    --shadow-card:          0 8px 32px rgba(0, 0, 0, 0.35);
+    --shadow-glow:          0 0 20px var(--accent-glow);
+
+    /* Radii */
+    --radius-sm:            8px;
+    --radius-md:            12px;
+    --radius-lg:            16px;
+    --radius-xl:            24px;
+
+    /* Transitions */
+    --transition-fast:      0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-medium:    0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+html, body, [data-testid="stAppViewContainer"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
+}
+
+/* ── Glassmorphism Card ──────────────────────────────────────────────────── */
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-fast),
+                box-shadow var(--transition-fast),
+                border-color var(--transition-fast);
+}
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+    border-color: var(--border-accent);
+}
+
+/* ── Metric Cards ────────────────────────────────────────────────────────── */
+.metric-card {
+    background: var(--gradient-purple-blue);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    color: #fff;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-fast),
+                box-shadow var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+.metric-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+    pointer-events: none;
+}
+.metric-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+.metric-card h3 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.85;
+    margin: 0 0 0.35rem;
+}
+.metric-card .metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+/* Metric card colour variants */
+.metric-card.blue-teal   { background: var(--gradient-blue-teal); }
+.metric-card.teal-green  { background: var(--gradient-teal-green); }
+.metric-card.warm        { background: var(--gradient-warm); }
+
+/* ── Gradient Header ─────────────────────────────────────────────────────── */
+.gradient-header {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+/* ── Section Headers ─────────────────────────────────────────────────────── */
+.section-header {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+}
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--gradient-main);
+}
+
+/* ── Skill Tags ──────────────────────────────────────────────────────────── */
+.skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    background: var(--success-bg);
+    color: var(--success);
+    border: 1px solid rgba(102, 187, 106, 0.25);
+    transition: all var(--transition-fast);
+}
+.skill-tag:hover {
+    background: rgba(102, 187, 106, 0.22);
+    transform: translateY(-1px);
+}
+
+.missing-skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    background: var(--danger-bg);
+    color: var(--danger);
+    border: 1px solid rgba(255, 75, 75, 0.25);
+    transition: all var(--transition-fast);
+}
+.missing-skill-tag:hover {
+    background: rgba(255, 75, 75, 0.22);
+    transform: translateY(-1px);
+}
+
+/* ── Status Badges ───────────────────────────────────────────────────────── */
+.badge-success {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--success-bg);
+    color: var(--success);
+    border: 1px solid rgba(102, 187, 106, 0.3);
+}
+.badge-warning {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--warning-bg);
+    color: var(--warning);
+    border: 1px solid rgba(255, 167, 38, 0.3);
+}
+.badge-danger {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--danger-bg);
+    color: var(--danger);
+    border: 1px solid rgba(255, 75, 75, 0.3);
+}
+
+/* ── Animated Score Display ──────────────────────────────────────────────── */
+@keyframes scoreReveal {
+    from { opacity: 0; transform: scale(0.6) rotate(-10deg); }
+    to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+.score-display {
+    animation: scoreReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.fade-slide-up {
+    animation: fadeSlideUp 0.45s ease-out forwards;
+}
+
+/* ── Responsive Grids ────────────────────────────────────────────────────── */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+@media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Sidebar Styling ─────────────────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #141824 0%, #0E1117 100%);
+    border-right: 1px solid var(--border-subtle);
+}
+[data-testid="stSidebar"] .stMarkdown h1,
+[data-testid="stSidebar"] .stMarkdown h2,
+[data-testid="stSidebar"] .stMarkdown h3 {
+    color: var(--text-primary);
+}
+
+/* ── Streamlit Overrides ─────────────────────────────────────────────────── */
+
+/* Metric widgets */
+[data-testid="stMetric"] {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    transition: all var(--transition-fast);
+}
+[data-testid="stMetric"]:hover {
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-glow);
+}
+[data-testid="stMetricLabel"] {
+    font-weight: 600;
+    color: var(--text-secondary) !important;
+    text-transform: uppercase;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.04em;
+}
+[data-testid="stMetricValue"] {
+    font-weight: 800 !important;
+    color: var(--text-primary) !important;
+}
+
+/* DataFrames */
+[data-testid="stDataFrame"] {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+}
+
+/* Buttons */
+.stButton > button {
+    background: var(--gradient-purple-blue);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 1.5rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.02em;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 14px rgba(108, 99, 255, 0.25);
+}
+.stButton > button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.40);
+    filter: brightness(1.08);
+}
+.stButton > button:active {
+    transform: translateY(0);
+}
+
+/* File uploader */
+[data-testid="stFileUploader"] {
+    border: 2px dashed var(--border-accent);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    transition: border-color var(--transition-fast);
+}
+[data-testid="stFileUploader"]:hover {
+    border-color: var(--accent);
+}
+
+/* Text inputs & selects */
+.stTextInput > div > div,
+.stSelectbox > div > div {
+    border-radius: var(--radius-sm) !important;
+    border-color: var(--border-subtle) !important;
+    transition: border-color var(--transition-fast) !important;
+}
+.stTextInput > div > div:focus-within,
+.stSelectbox > div > div:focus-within {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 2px var(--accent-glow) !important;
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 4px;
+    border-bottom: 2px solid var(--border-subtle);
+}
+.stTabs [data-baseweb="tab"] {
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: all var(--transition-fast);
+}
+.stTabs [aria-selected="true"] {
+    background: var(--bg-card) !important;
+    border-bottom: 2px solid var(--accent) !important;
+}
+
+/* Expander */
+.streamlit-expanderHeader {
+    font-weight: 600;
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast);
+}
+.streamlit-expanderHeader:hover {
+    background: var(--bg-glass);
+}
+
+/* Progress bar */
+.stProgress > div > div {
+    background: var(--gradient-main) !important;
+    border-radius: 4px;
+}
+
+/* ── Dark Theme Overrides ────────────────────────────────────────────────── */
+[data-theme='dark'] {
+    --bg-primary:     #0E1117;
+    --bg-secondary:   #1B1F2A;
+    --text-primary:   #FAFAFA;
+    --text-secondary: #B0BEC5;
+}
+[data-theme='dark'] .glass-card {
+    background: rgba(25, 30, 45, 0.70);
+}
+[data-theme='dark'] .metric-card {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.50);
+}
